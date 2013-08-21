@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Type:</b>
+  <%= @repository_type.rtype %>
+</p>
+
+<p>
+  <b>Path part:</b>
+  <%= @repository_type.path_part %>
+</p>
+
+
+<%= link_to 'Edit', edit_repository_type_path(@repository_type) %> |
+<%= link_to 'Back', repository_types_path %>

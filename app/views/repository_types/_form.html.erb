@@ -1,0 +1,25 @@
+<%= form_for(@repository_type) do |f| %>
+  <% if @repository_type.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@repository_type.errors.count, "error") %> prohibited this repository_type from being saved:</h2>
+
+      <ul>
+      <% @repository_type.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :rtype %><br />
+    <%= f.text_field :rtype %>
+  </div>
+  <div class="field">
+    <%= f.label :path_part %><br />
+    <%= f.text_field :path_part %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

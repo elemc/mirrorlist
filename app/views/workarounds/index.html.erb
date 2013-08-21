@@ -1,0 +1,25 @@
+<h1>Listing workarounds</h1>
+
+<table>
+  <tr>
+    <th>Key</th>
+    <th>Value</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @workarounds.each do |workaround| %>
+  <tr>
+    <td><%= workaround.key %></td>
+    <td><%= workaround.value %></td>
+    <td><%= link_to 'Show', workaround %></td>
+    <td><%= link_to 'Edit', edit_workaround_path(workaround) %></td>
+    <td><%= link_to 'Destroy', workaround, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Workaround', new_workaround_path %>

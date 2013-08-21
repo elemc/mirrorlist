@@ -1,0 +1,25 @@
+<%= form_for(@workaround) do |f| %>
+  <% if @workaround.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@workaround.errors.count, "error") %> prohibited this workaround from being saved:</h2>
+
+      <ul>
+      <% @workaround.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :key %><br />
+    <%= f.text_field :key %>
+  </div>
+  <div class="field">
+    <%= f.label :value %><br />
+    <%= f.text_field :value %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

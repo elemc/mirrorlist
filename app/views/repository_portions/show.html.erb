@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @repository_portion.name %>
+</p>
+
+<p>
+  <b>Url part:</b>
+  <%= @repository_portion.url_part %>
+</p>
+
+
+<%= link_to 'Edit', edit_repository_portion_path(@repository_portion) %> |
+<%= link_to 'Back', repository_portions_path %>

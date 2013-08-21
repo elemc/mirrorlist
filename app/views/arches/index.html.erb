@@ -1,0 +1,23 @@
+<h1>Listing arches</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @arches.each do |arch| %>
+  <tr>
+    <td><%= arch.name %></td>
+    <td><%= link_to 'Show', arch %></td>
+    <td><%= link_to 'Edit', edit_arch_path(arch) %></td>
+    <td><%= link_to 'Destroy', arch, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Arch', new_arch_path %>

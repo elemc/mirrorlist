@@ -1,0 +1,25 @@
+<%= form_for(@repository_portion) do |f| %>
+  <% if @repository_portion.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@repository_portion.errors.count, "error") %> prohibited this repository_portion from being saved:</h2>
+
+      <ul>
+      <% @repository_portion.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :url_part %><br />
+    <%= f.text_field :url_part %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

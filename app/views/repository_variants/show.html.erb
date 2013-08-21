@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @repository_variant.name %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%= @repository_variant.url %>
+</p>
+
+
+<%= link_to 'Edit', edit_repository_variant_path(@repository_variant) %> |
+<%= link_to 'Back', repository_variants_path %>
