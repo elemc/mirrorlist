@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Url:</b>
+  <%= @build_mirror.url %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @build_mirror.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_build_mirror_path(@build_mirror) %> |
+<%= link_to 'Back', build_mirrors_path %>

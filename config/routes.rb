@@ -1,4 +1,13 @@
 Mirrorlist::Application.routes.draw do
+  resources :releases
+
+
+  resources :build_mirrors
+
+
+  resources :languages
+
+
   resources :repository_portions
 
 
