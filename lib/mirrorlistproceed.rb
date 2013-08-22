@@ -107,7 +107,7 @@ class MirrorListProceed < Object
                 value = @repo_params[key]
                 str_to_add.sub! sub_str, value
                 str_to_add.gsub! %r{/+}, '/' # remove slashes
-
+                str_to_add.sub! ":/", "://"  # workaround fix #1
            end
            @mlist << str_to_add
          end
