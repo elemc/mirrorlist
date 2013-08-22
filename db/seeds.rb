@@ -12,6 +12,19 @@ arches = Arch.create(
     ]
 )
 
+lagnuages = Language.create(
+    [   { name: 'RU' },
+        { name: 'x86_64' },
+    ]
+)
+
+types = RepositoryType.create(
+    [   { rtype: 'free', path_part: '/free/fedora/' },
+        { rtype: 'nonfree', path_part: '/nonfree/fedora/' },
+        { rtype: 'fixes', path_part: '/fixes/fedora/' },
+    ]
+)
+
 # System !!!
 variants = RepositoryVariant.create(
     [   { name: 'main', url: '$mirror$/russianfedora/$repos$/releases/$version$/Everything/$arch$/$portion$/' },
