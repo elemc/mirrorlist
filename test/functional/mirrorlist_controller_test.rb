@@ -1,7 +1,8 @@
 require 'test_helper'
 
 class MirrorlistControllerTest < ActionController::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "should get repos" do
+    get :index, repo: 'free-fedora-updates-testing-19'
+    assert_response :success
+  end
 end
