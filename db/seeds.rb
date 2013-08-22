@@ -25,7 +25,7 @@ types = RepositoryType.create(
     ]
 )
 
-releases = Release.create( [{ name: 'rawhide', stable: true }] )
+releases = Release.create( [{ name: 'rawhide', stable: false }] )
 
 # System !!!
 variants = RepositoryVariant.create(
