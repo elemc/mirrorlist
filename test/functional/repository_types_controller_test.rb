@@ -18,7 +18,7 @@ class RepositoryTypesControllerTest < ActionController::TestCase
 
   test "should create repository_type" do
     assert_difference('RepositoryType.count') do
-      post :create, repository_type: { path_part: @repository_type.path_part, type: @repository_type.type }
+      post :create, repository_type: { path_part: @repository_type.path_part, rtype: @repository_type.rtype }
     end
 
     assert_redirected_to repository_type_path(assigns(:repository_type))
@@ -35,7 +35,7 @@ class RepositoryTypesControllerTest < ActionController::TestCase
   end
 
   test "should update repository_type" do
-    put :update, id: @repository_type, repository_type: { path_part: @repository_type.path_part, type: @repository_type.type }
+    put :update, id: @repository_type, repository_type: { path_part: @repository_type.path_part, rtype: @repository_type.rtype }
     assert_redirected_to repository_type_path(assigns(:repository_type))
   end
 

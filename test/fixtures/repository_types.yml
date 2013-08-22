@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  type: 
+  rtype: free
   path_part: MyString
 
 two:
-  type: 
+  rtype: nonfree
   path_part: MyString
