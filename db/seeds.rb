@@ -14,7 +14,7 @@ arches = Arch.create(
 
 lagnuages = Language.create(
     [   { name: 'RU' },
-        { name: 'x86_64' },
+        { name: 'EN' },
     ]
 )
 
@@ -24,6 +24,8 @@ types = RepositoryType.create(
         { rtype: 'fixes', path_part: '/fixes/fedora/' },
     ]
 )
+
+releases = Release.create( [{ name: 'rawhide', stable: true }] )
 
 # System !!!
 variants = RepositoryVariant.create(
