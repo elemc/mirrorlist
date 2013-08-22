@@ -1,6 +1,6 @@
 <p>Common references</p>
 <ul>
-    <li><%= link_to "Mirrors", controller: 'mirrors', action: 'index' =%></li>
+    <li><%= link_to "Mirrors", controller: 'mirrors', action: 'index' =%><%= " (empty)" if Mirror.all.size == 0 =%><%= " (#{Mirror.all.size} records)" if Mirror.all.size > 0 =%></li>
     <li><%= link_to "Build mirrors", controller: 'build_mirrors', action: 'index' =%></li>
     <li><%= link_to "Architectures", controller: 'arches', action: 'index' =%></li>
     <li><%= link_to "Languages", controller: 'languages', action: 'index' =%></li>
