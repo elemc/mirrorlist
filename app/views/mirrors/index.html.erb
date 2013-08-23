@@ -5,6 +5,7 @@
     <th>Url</th>
     <th>Description</th>
     <th>Country</th>
+    <th>Updated</th>
     <th></th>
     <th></th>
     <th></th>
@@ -15,6 +16,7 @@
     <td><%= mirror.url %></td>
     <td><%= mirror.description %></td>
     <td><%= mirror.country %></td>
+    <td><%= mirror.updated_at.in_time_zone('Europe/Moscow') %></td>
     <td><%= link_to 'Show', mirror %></td>
     <td><%= link_to 'Edit', edit_mirror_path(mirror) %></td>
     <td><%= link_to 'Destroy', mirror, method: :delete, data: { confirm: 'Are you sure?' } %></td>
