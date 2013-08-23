@@ -1,0 +1,15 @@
+<!--<%= @mirrorlist[0] if @mirrorlist.size > 0 %>-->
+
+<table>
+  <tr>
+    <th>Mirrors</th>
+  </tr>
+  <% @mirrorlist[1..-1].each do |ml| %>
+  <tr>
+    <td><%= link_to ml, ml %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
