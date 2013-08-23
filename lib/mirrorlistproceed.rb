@@ -120,7 +120,7 @@ class MirrorListProceed < Object
                 sub_str = "$#{key}$"
                 value = @repo_params[key]
                 str_to_add.sub! sub_str, value
-                str_to_add clear_slashes! str_to_add
+                str_to_add = clear_slashes! str_to_add
            end
            @mlist << str_to_add
          end
@@ -161,12 +161,16 @@ class MirrorListProceed < Object
         m
     end
 
-    def init_mlist
-        init_str = "# repo = #{@repo} arch = #{@arch}"
+    def add_countries_to_mlist
         # FIXME: It's old style 
         # Language.all.each { |lang| init_str += " country = #{lang.name}" }
         # New style:
-        init_str += " country = #{@country}" unless @country.nil?
+        result_str = " country = #{@country}" unless @country.nil?
+    end
+
+    def init_mlist
+        init_str = "# repo = #{@repo} arch = #{@arch}"
+        init_str += add_countries_to_mlist
         @mlist << init_str
     end
 
@@ -201,6 +205,8 @@ class MirrorListProceedPath < MirrorListProceed
         generate_main_list
     end
 
+private
+
     def generate_main_list
         get_mirrors_array.each do |mirror_db|
             mirror = mirror_db.url
@@ -210,5 +216,11 @@ class MirrorListProceedPath < MirrorListProceed
             str_to_add += '/' if str_to_add[-1] != '/'
             @mlist << str_to_add
         end
+    end
+
+    def init_mlist
+        init_str = "# path = #{@path}"
+        init_str += add_countries_to_mlist
+        @mlist << init_str
     end
 end
