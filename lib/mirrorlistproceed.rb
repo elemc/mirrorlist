@@ -120,15 +120,10 @@ class MirrorListProceed < Object
                 sub_str = "$#{key}$"
                 value = @repo_params[key]
                 str_to_add.sub! sub_str, value
-                str_to_add.gsub! %r{/+}, '/' # remove slashes
-                str_to_add.sub! ":/", "://"  # workaround fix #1
+                str_to_add clear_slashes! str_to_add
            end
            @mlist << str_to_add
          end
-    end
-
-    def cler_slashes
-        
     end
 
     def get_me_varian_and_portion( repo )
@@ -188,5 +183,32 @@ class MirrorListProceed < Object
 
         [temp_ver, -2]
     end
+
+    def clear_slashes!( str )
+        str.gsub! %r{/+}, '/' # remove slashes
+        str.sub! ":/", "://"  # workaround fix #1
+    end
 end
 
+class MirrorListProceedPath < MirrorListProceed
+
+    def initialize( path, country = nil )
+        @path = path
+        @country = country
+        @mlist = []
+
+        init_mlist
+        generate_main_list
+    end
+
+    def generate_main_list
+        get_mirrors_array.each do |mirror_db|
+            mirror = mirror_db.url
+            path = @path
+            path = path[1..-1] if path[0] == '/'
+            str_to_add = URI.join( URI(mirror), path ).to_s
+            str_to_add += '/' if str_to_add[-1] != '/'
+            @mlist << str_to_add
+        end
+    end
+end

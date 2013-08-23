@@ -54,6 +54,7 @@ class MirrorListGeoIP < Object
     private
 
     def init_data
+        Dir.mkdir DATABASE_DIR unless Dir.exists? DATABASE_DIR
         unless File.exists? COUNTRY_DATABASE
             `pushd #{DATABASE_DIR}; wget #{COUNTRY_URL}; gzip -d GeoIP.dat.gz; popd`
         end

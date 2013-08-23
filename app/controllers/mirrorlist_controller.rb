@@ -10,7 +10,6 @@ class MirrorlistController < ApplicationController
         geoip = MirrorListGeoIP.new( request.remote_ip )
         out_c = params.key?( 'country' ) ? params['country'] : geoip.code
 
-        # TODO: create scaffold for stats
         Thread.new do 
             founded = Stat.where('country_code=? AND city=? AND repo=? AND arch=?', geoip.code, geoip.city, params['repo'], params['arch'])
             if founded.size == 0
@@ -30,7 +29,13 @@ class MirrorlistController < ApplicationController
             end
         end
 
-        mlp = MirrorListProceed.new( params['repo'], params['arch'], out_c )
+        if params.key? 'repo' and params.key? 'arch'
+            mlp = MirrorListProceed.new( params['repo'], params['arch'], out_c )
+        elsif params.key? 'path'
+            mlp = MirrorListProceedPath.new( params['path'], out_c )
+        else
+            mpl = ""
+        end
         render :text => mlp.to_s, :content_type => :plaintext
     end
 end
