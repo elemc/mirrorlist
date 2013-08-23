@@ -1,9 +1,8 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  code: MyString
-  name: MyString
-
+  code: RU
+  name: RUSSIA
 two:
-  code: MyString
-  name: MyString
+  code: BY
+  name: Lukash country

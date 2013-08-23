@@ -4,6 +4,7 @@
   <tr>
     <th>Url</th>
     <th>Description</th>
+    <th>Country</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,6 +14,7 @@
   <tr>
     <td><%= mirror.url %></td>
     <td><%= mirror.description %></td>
+    <td><%= mirror.country %></td>
     <td><%= link_to 'Show', mirror %></td>
     <td><%= link_to 'Edit', edit_mirror_path(mirror) %></td>
     <td><%= link_to 'Destroy', mirror, method: :delete, data: { confirm: 'Are you sure?' } %></td>

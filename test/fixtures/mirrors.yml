@@ -3,7 +3,8 @@
 one:
   url: MyString
   description: MyText
-
+  country_code: RU
 two:
   url: MyString
   description: MyText
+  country_code: BY

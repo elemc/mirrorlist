@@ -9,9 +9,10 @@
 
 
 class MirrorListProceed < Object
-    def initialize( repo, arch )
+    def initialize( repo, arch, country=nil )
         @repo = repo
         @arch = arch
+        @country = country
         @mlist = []
 
         init_mlist
@@ -95,9 +96,22 @@ class MirrorListProceed < Object
         @repo_params['version']     = version
     end
 
+    def get_mirrors_array
+        unless @country.nil?
+            c = Country.find_by_code @country
+            unless c.nil?
+                result_list = Mirror.where( country_code: @country )
+                result_list += Mirror.where( "country_code != ?", @country )
+                return result_list
+            end
+        end
+
+        Mirror.all              
+    end
+
     def generate_main_list
         return nil unless @repo_params.key? 'variant'
-        Mirror.all.each do |mirror_db|
+        get_mirrors_array.each do |mirror_db|
             mirror = mirror_db.url
             variant = @repo_params['variant']
             str_to_add = variant.sub '$mirror$', mirror
@@ -154,7 +168,10 @@ class MirrorListProceed < Object
 
     def init_mlist
         init_str = "# repo = #{@repo} arch = #{@arch}"
-        Language.all.each { |lang| init_str += " country = #{lang.name}" }
+        # FIXME: It's old style 
+        # Language.all.each { |lang| init_str += " country = #{lang.name}" }
+        # New style:
+        init_str += " country = #{@country}" unless @country.nil?
         @mlist << init_str
     end
 
