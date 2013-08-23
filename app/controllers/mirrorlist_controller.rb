@@ -11,7 +11,8 @@ class MirrorlistController < ApplicationController
         out_c = params.key?( 'country' ) ? params['country'] : geoip.code
 
         Thread.new do
-            founded = Stat.where('country_code=? AND city=? AND repo=? AND arch=?', geoip.code, geoip.city, params['repo'], params['arch'])
+            founded = Stat.where('country_code=? AND city=? AND repo=? AND arch=?', geoip.code, geoip.city, params['repo'], params['arch']) if params.key? 'repo' and params.key? 'arch'
+            founded = Stat.where('country_code=? AND city=? AND repo=? AND arch=?', geoip.code, geoip.city, params['path'], 'path') if params.key? 'path'
             if founded.size == 0
                 Stat.new do |s|
                     s.country_code  = geoip.code
