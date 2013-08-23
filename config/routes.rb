@@ -1,4 +1,8 @@
 Mirrorlist::Application.routes.draw do
+  resources :countries
+#  get 'countries/fill', :as => :fill_countries
+ 
+
   resources :releases
 
 

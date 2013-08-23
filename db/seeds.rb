@@ -5,6 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+#require 'net/http'
 
 arches = Arch.create(
     [   { name: 'i386' },
@@ -45,3 +46,23 @@ porions = RepositoryPortion.create(
         { name: 'source', url_part: '/SRPMS/' },
     ]
 )
+
+# Fill countries
+require 'net/http'
+countries_url = URI 'http://www.iso.org/iso/home/standards/country_codes/country_names_and_code_elements_txt.htm'
+content = Net::HTTP.start(countries_url.host) do |http|
+    resp = http.get(countries_url.path)
+    resp.body
+end
+clist = content.force_encoding('utf-8').split "\r\n"
+clist[1..-1].each do |cpair|
+    name,code = cpair.split ';'
+    match = Country.find_by_code code
+    next unless match.nil?
+    Country.new do |c|
+        c.code = code
+        c.name = name
+        c.save
+    end
+end
+ 
