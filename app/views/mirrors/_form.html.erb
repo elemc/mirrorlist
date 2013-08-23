@@ -21,7 +21,12 @@
   </div>
   <div class="field">
     <%= f.label :country_code %><br />
-    <%= f.collection_select :country_code, Country.all, :code, :name, {:selected => 'RU'} %>
+    <%= if @mirror.new_record?
+            f.collection_select :country_code, Country.all, :code, :name, {:selected => 'RU'}
+        else
+            f.collection_select :country_code, Country.all, :code, :name, {:selected => @mirror.country_code}
+        end
+        %>
   </div>
  <div class="actions">
     <%= f.submit %>
