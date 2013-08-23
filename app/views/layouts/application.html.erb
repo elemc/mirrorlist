@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Mirrorlist</title>
+<title>Mirrors List / <%=h yield(:title) %></title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 <h1><%= link_to "MirrorList", :root =%></h1>
+<h2><%=h yield(:title) %></h2>
 <%= yield %>
 
 </body>

@@ -39,3 +39,4 @@ gem 'jquery-rails'
 
 gem 'pg'
 gem 'geoip'
+

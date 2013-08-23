@@ -1,3 +1,5 @@
+<% content_for :title, "Home" %>
+
 <p>Common references</p>
 <ul>
     <li><%= link_to "Mirrors", controller: 'mirrors', action: 'index' =%><%= " (empty)" if Mirror.all.size == 0 =%><%= " (#{Mirror.all.size} records)" if Mirror.all.size > 0 =%></li>
