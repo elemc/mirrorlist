@@ -7,8 +7,8 @@ require 'thread'
 
 class MirrorlistController < ApplicationController
     def index
-        geoip = MirrorListGeoIP.new( 'mirrors.rfremix.ru' ) #request.remote_ip )
-        out_c = params['country'] ? params.key?( 'country' ) : geoip.code
+        geoip = MirrorListGeoIP.new( request.remote_ip )
+        out_c = params.key?( 'country' ) ? params['country'] : geoip.code
 
         # TODO: create scaffold for stats
         Thread.new do 
