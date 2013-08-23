@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  country_code: 
+  city: MyString
+  repo: MyString
+  arch: MyString
+  count: 1
+
+two:
+  country_code: 
+  city: MyString
+  repo: MyString
+  arch: MyString
+  count: 1

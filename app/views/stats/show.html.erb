@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Country code:</b>
+  <%= @stat.country_code %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%= @stat.city %>
+</p>
+
+<p>
+  <b>Repo:</b>
+  <%= @stat.repo %>
+</p>
+
+<p>
+  <b>Arch:</b>
+  <%= @stat.arch %>
+</p>
+
+<p>
+  <b>Count:</b>
+  <%= @stat.count %>
+</p>
+
+
+<%= link_to 'Edit', edit_stat_path(@stat) %> |
+<%= link_to 'Back', stats_path %>

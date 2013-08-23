@@ -1,0 +1,37 @@
+<%= form_for(@stat) do |f| %>
+  <% if @stat.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@stat.errors.count, "error") %> prohibited this stat from being saved:</h2>
+
+      <ul>
+      <% @stat.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :country_code %><br />
+    <%= f.text_field :country_code %>
+  </div>
+  <div class="field">
+    <%= f.label :city %><br />
+    <%= f.text_field :city %>
+  </div>
+  <div class="field">
+    <%= f.label :repo %><br />
+    <%= f.text_field :repo %>
+  </div>
+  <div class="field">
+    <%= f.label :arch %><br />
+    <%= f.text_field :arch %>
+  </div>
+  <div class="field">
+    <%= f.label :count %><br />
+    <%= f.number_field :count %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
