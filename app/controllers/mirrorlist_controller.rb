@@ -32,7 +32,7 @@ class MirrorlistController < ApplicationController
                     f.save
                 end
             end
-        end if geoip.code.strip.size == 0
+        end if geoip.code.strip != '--'
 
         if params.key? 'repo' and params.key? 'arch'
             mlp = MirrorListProceed.new( params['repo'], params['arch'], out_c )
