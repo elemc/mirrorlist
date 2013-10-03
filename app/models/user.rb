@@ -15,4 +15,10 @@ class User < ActiveRecord::Base
     false
   end
 
+  def mirror?
+    unless role.nil?
+        return true if role.downcase == 'mirror'
+    end
+    false
+  end
 end

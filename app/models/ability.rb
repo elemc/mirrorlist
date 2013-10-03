@@ -7,6 +7,9 @@ class Ability
     user ||= User.new # guest user (not logged in)
     if user.admin?
         can :manage, :all
+    elsif user.mirror?
+        can :read, :all
+        can :manage, Mirror
     else
         can :read, :all
     end
