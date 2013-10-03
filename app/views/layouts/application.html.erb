@@ -7,9 +7,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
 <h1><%= link_to "MirrorList", :root =%></h1>
 <h2><%=h yield(:title) %></h2>
 <%= yield %>
+
+<h2>Login</h2>
+<div id="header">
+  <%= render "public/links" %>
+</div>
 
 </body>
 </html>

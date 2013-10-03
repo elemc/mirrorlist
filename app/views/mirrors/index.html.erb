@@ -17,13 +17,21 @@
     <td><%= mirror.description %></td>
     <td><%= mirror.country %></td>
     <td><%= mirror.updated_at.in_time_zone('Europe/Moscow') %></td>
-    <td><%= link_to 'Show', mirror %></td>
-    <td><%= link_to 'Edit', edit_mirror_path(mirror) %></td>
-    <td><%= link_to 'Destroy', mirror, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% if can?( :read, mirror ) %>
+        <td><%= link_to 'Show', mirror %></td>
+    <% end %>
+    <% if can? :update, mirror %>
+        <td><%= link_to 'Edit', edit_mirror_path(mirror) %></td>
+    <% end %>
+    <% if can? :destroy, mirror %>
+        <td><%= link_to 'Destroy', mirror, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Mirror', new_mirror_path %>
+<% if can? :create, Mirror %>
+    <%= link_to 'New Mirror', new_mirror_path %>
+<% end %>

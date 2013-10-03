@@ -1,4 +1,7 @@
 class MirrorsController < ApplicationController
+  load_and_authorize_resource
+  check_authorization
+
   # GET /mirrors
   # GET /mirrors.json
   def index

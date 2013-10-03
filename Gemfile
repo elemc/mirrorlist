@@ -40,3 +40,7 @@ gem 'jquery-rails'
 gem 'pg'
 gem 'geoip'
 gem 'protected_attributes'
+
+# auth
+gem 'devise'
+gem 'cancan'
