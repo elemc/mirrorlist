@@ -65,4 +65,6 @@ clist[1..-1].each do |cpair|
         c.save
     end
 end
- 
+
+# Fill admin
+admin = User.create( [{ email: 'admin@localhost.tld', password: '1234', password_confirmation: '1234', role: 'admin'}] )
