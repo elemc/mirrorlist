@@ -2,6 +2,7 @@ require 'test_helper'
 
 class RepositoryVariantsControllerTest < ActionController::TestCase
   setup do
+    login
     @repository_variant = repository_variants(:one)
   end
 

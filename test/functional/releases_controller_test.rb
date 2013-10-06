@@ -2,6 +2,7 @@ require 'test_helper'
 
 class ReleasesControllerTest < ActionController::TestCase
   setup do
+    login
     @release = releases(:one)
   end
 

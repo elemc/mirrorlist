@@ -2,6 +2,7 @@ require 'test_helper'
 
 class RepositoryTypesControllerTest < ActionController::TestCase
   setup do
+    login
     @repository_type = repository_types(:one)
   end
 

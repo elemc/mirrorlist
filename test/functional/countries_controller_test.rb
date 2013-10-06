@@ -2,6 +2,7 @@ require 'test_helper'
 
 class CountriesControllerTest < ActionController::TestCase
   setup do
+    login
     @country = countries(:one)
   end
 

@@ -2,6 +2,7 @@ require 'test_helper'
 
 class WorkaroundsControllerTest < ActionController::TestCase
   setup do
+    login
     @workaround = workarounds(:one)
   end
 

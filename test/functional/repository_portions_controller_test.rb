@@ -2,6 +2,7 @@ require 'test_helper'
 
 class RepositoryPortionsControllerTest < ActionController::TestCase
   setup do
+    login
     @repository_portion = repository_portions(:one)
   end
 

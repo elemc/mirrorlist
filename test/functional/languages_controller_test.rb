@@ -2,6 +2,7 @@ require 'test_helper'
 
 class LanguagesControllerTest < ActionController::TestCase
   setup do
+    login
     @language = languages(:one)
   end
 

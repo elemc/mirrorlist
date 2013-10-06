@@ -1,7 +1,11 @@
 require 'test_helper'
 
 class ArchesControllerTest < ActionController::TestCase
+
+  include Devise::TestHelpers
+
   setup do
+    login
     @arch = arches(:one)
   end
 

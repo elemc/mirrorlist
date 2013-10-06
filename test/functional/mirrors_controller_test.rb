@@ -2,6 +2,7 @@ require 'test_helper'
 
 class MirrorsControllerTest < ActionController::TestCase
   setup do
+    login
     @mirror = mirrors(:one)
   end
 
