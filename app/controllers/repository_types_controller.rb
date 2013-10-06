@@ -1,4 +1,7 @@
 class RepositoryTypesController < ApplicationController
+  load_and_authorize_resource
+  check_authorization
+
   # GET /repository_types
   # GET /repository_types.json
   def index

@@ -13,5 +13,7 @@
 </p>
 
 
+<% if can?( :create, @repository_portion ) %>
 <%= link_to 'Edit', edit_repository_portion_path(@repository_portion) %> |
+<% end %>
 <%= link_to 'Back', repository_portions_path %>

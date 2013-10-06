@@ -12,6 +12,7 @@
   <%= @workaround.value %>
 </p>
 
-
-<%= link_to 'Edit', edit_workaround_path(@workaround) %> |
+<% if can?( :update, @workaround ) %>
+    <%= link_to 'Edit', edit_workaround_path(@workaround) %> |
+<% end %>
 <%= link_to 'Back', workarounds_path %>

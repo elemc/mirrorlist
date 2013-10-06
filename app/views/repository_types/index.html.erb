@@ -13,13 +13,15 @@
   <tr>
     <td><%= repository_type.rtype %></td>
     <td><%= repository_type.path_part %></td>
-    <td><%= link_to 'Show', repository_type %></td>
-    <td><%= link_to 'Edit', edit_repository_type_path(repository_type) %></td>
-    <td><%= link_to 'Destroy', repository_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><% if can?( :read, repository_type ) %> <%= link_to 'Show', repository_type %> <% end %></td>
+    <td><% if can?( :update, repository_type ) %><%= link_to 'Edit', edit_repository_type_path(repository_type) %> <% end %></td>
+    <td><% if can?( :destroy, repository_type ) %><%= link_to 'Destroy', repository_type, method: :delete, data: { confirm: 'Are you sure?' } %> <% end %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New repository type', new_repository_type_path %>
+<% if can?( :create, RepositoryType ) %>
+    <%= link_to 'New repository type', new_repository_type_path %>
+<% end %>

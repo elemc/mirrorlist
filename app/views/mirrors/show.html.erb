@@ -16,5 +16,7 @@
   <%= @mirror.country %>
 </p>
 
-<%= link_to 'Edit', edit_mirror_path(@mirror) %> |
+<% if can?( :update, @mirror ) and our_mirror?( @mirror, current_user )%>
+    <%= link_to 'Edit', edit_mirror_path(@mirror) %> |
+<% end %>
 <%= link_to 'Back', mirrors_path %>

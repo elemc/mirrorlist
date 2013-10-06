@@ -1,4 +1,7 @@
 class BuildMirrorsController < ApplicationController
+  load_and_authorize_resource
+  check_authorization
+
   # GET /build_mirrors
   # GET /build_mirrors.json
   def index

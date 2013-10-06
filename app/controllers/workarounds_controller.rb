@@ -1,4 +1,7 @@
 class WorkaroundsController < ApplicationController
+  load_and_authorize_resource
+  check_authorization
+
   # GET /workarounds
   # GET /workarounds.json
   def index

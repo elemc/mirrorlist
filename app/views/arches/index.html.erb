@@ -11,13 +11,15 @@
 <% @arches.each do |arch| %>
   <tr>
     <td><%= arch.name %></td>
-    <td><%= link_to 'Show', arch %></td>
-    <td><%= link_to 'Edit', edit_arch_path(arch) %></td>
-    <td><%= link_to 'Destroy', arch, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><% if can?( :read, arch ) %> <%= link_to 'Show', arch %> <% end %></td>
+    <td> <% if can?( :update, arch ) %> <%= link_to 'Edit', edit_arch_path(arch) %> <% end %> </td>
+    <td> <% if can?( :destroy, arch ) %> <%= link_to 'Destroy', arch, method: :delete, data: { confirm: 'Are you sure?' } %> <% end %> </td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New architecure', new_arch_path %>
+<% if can? :create, Arch %>
+    <%= link_to 'New architecure', new_arch_path %>
+<% end %>

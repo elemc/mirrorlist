@@ -12,6 +12,7 @@
   <%= @release.stable %>
 </p>
 
-
-<%= link_to 'Edit', edit_release_path(@release) %> |
+<% if can? :update, @release %>
+    <%= link_to 'Edit', edit_release_path(@release) %> |
+<% end %>
 <%= link_to 'Back', releases_path %>

@@ -1,4 +1,7 @@
 class ReleasesController < ApplicationController
+  load_and_authorize_resource
+  check_authorization
+
   # GET /releases
   # GET /releases.json
   def index

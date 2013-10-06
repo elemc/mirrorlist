@@ -12,6 +12,7 @@
   <%= @repository_variant.url %>
 </p>
 
-
-<%= link_to 'Edit', edit_repository_variant_path(@repository_variant) %> |
+<% if can?( :update, @repository_variant ) %>
+    <%= link_to 'Edit', edit_repository_variant_path(@repository_variant) %> |
+<% end %>
 <%= link_to 'Back', repository_variants_path %>

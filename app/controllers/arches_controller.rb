@@ -1,4 +1,7 @@
 class ArchesController < ApplicationController
+  load_and_authorize_resource
+  check_authorization
+
   # GET /arches
   # GET /arches.json
   def index

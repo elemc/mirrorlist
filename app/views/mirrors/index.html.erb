@@ -5,6 +5,7 @@
     <th>Url</th>
     <th>Description</th>
     <th>Country</th>
+    <th>User</th>
     <th>Updated</th>
     <th></th>
     <th></th>
@@ -16,16 +17,11 @@
     <td><%= mirror.url %></td>
     <td><%= mirror.description %></td>
     <td><%= mirror.country %></td>
+    <td><%= mirror.user_str %></td>
     <td><%= mirror.updated_at.in_time_zone('Europe/Moscow') %></td>
-    <% if can?( :read, mirror ) %>
-        <td><%= link_to 'Show', mirror %></td>
-    <% end %>
-    <% if can? :update, mirror %>
-        <td><%= link_to 'Edit', edit_mirror_path(mirror) %></td>
-    <% end %>
-    <% if can? :destroy, mirror %>
-        <td><%= link_to 'Destroy', mirror, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    <% end %>
+    <td><% if can?( :read, mirror ) %> <%= link_to 'Show', mirror %> <% end %></td>
+    <td> <% if can?( :update, mirror ) and our_mirror?( mirror, current_user )%> <%= link_to 'Edit', edit_mirror_path(mirror) %> <% end %> </td>
+    <td> <% if can?( :destroy, mirror ) and our_mirror?( mirror, current_user ) %> <%= link_to 'Destroy', mirror, method: :delete, data: { confirm: 'Are you sure?' } %> <% end %></td>
   </tr>
 <% end %>
 </table>

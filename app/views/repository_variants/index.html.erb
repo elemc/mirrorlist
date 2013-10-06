@@ -13,13 +13,15 @@
   <tr>
     <td><%= repository_variant.name %></td>
     <td><%= repository_variant.url %></td>
-    <td><%= link_to 'Show', repository_variant %></td>
-    <td><%= link_to 'Edit', edit_repository_variant_path(repository_variant) %></td>
-    <td><%= link_to 'Destroy', repository_variant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><% if can?( :read, repository_variant ) %> <%= link_to 'Show', repository_variant %> <% end %></td>
+    <td><% if can?( :update, repository_variant ) %><%= link_to 'Edit', edit_repository_variant_path(repository_variant) %> <% end %></td>
+    <td><% if can?( :destroy, repository_variant ) %><%= link_to 'Destroy', repository_variant, method: :delete, data: { confirm: 'Are you sure?' } %> <% end %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New repository variant', new_repository_variant_path %>
+<% if can?( :create, RepositoryVariant ) %>
+    <%= link_to 'New repository variant', new_repository_variant_path %>
+<% end %>

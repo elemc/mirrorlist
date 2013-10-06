@@ -1,4 +1,7 @@
 class RepositoryVariantsController < ApplicationController
+  load_and_authorize_resource
+  check_authorization
+
   # GET /repository_variants
   # GET /repository_variants.json
   def index

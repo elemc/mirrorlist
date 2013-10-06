@@ -13,13 +13,15 @@
   <tr>
     <td><%= workaround.key %></td>
     <td><%= workaround.value %></td>
-    <td><%= link_to 'Show', workaround %></td>
-    <td><%= link_to 'Edit', edit_workaround_path(workaround) %></td>
-    <td><%= link_to 'Destroy', workaround, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><% if can?( :read, workaround ) %> <%= link_to 'Show', workaround %><% end %></td>
+    <td><% if can?( :update, workaround ) %><%= link_to 'Edit', edit_workaround_path(workaround) %><% end %></td>
+    <td><% if can?( :destroy, workaround ) %><%= link_to 'Destroy', workaround, method: :delete, data: { confirm: 'Are you sure?' } %><% end %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Workaround', new_workaround_path %>
+<% if can?( :create, Workaround ) %>
+    <%= link_to 'New Workaround', new_workaround_path %>
+<% end %>

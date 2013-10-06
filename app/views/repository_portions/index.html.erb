@@ -13,13 +13,15 @@
   <tr>
     <td><%= repository_portion.name %></td>
     <td><%= repository_portion.url_part %></td>
-    <td><%= link_to 'Show', repository_portion %></td>
-    <td><%= link_to 'Edit', edit_repository_portion_path(repository_portion) %></td>
-    <td><%= link_to 'Destroy', repository_portion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><% if can?( :read, repository_portion ) %> <%= link_to 'Show', repository_portion %><% end %></td>
+    <td><% if can?( :update, repository_portion ) %><%= link_to 'Edit', edit_repository_portion_path(repository_portion) %><% end %></td>
+    <td><% if can?( :destroy, repository_portion ) %><%= link_to 'Destroy', repository_portion, method: :delete, data: { confirm: 'Are you sure?' } %><% end %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
+<% if can?( :create, RepositoryPortion ) %>
 <%= link_to 'New repository portion', new_repository_portion_path %>
+<% end %>

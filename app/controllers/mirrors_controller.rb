@@ -1,6 +1,7 @@
 class MirrorsController < ApplicationController
   load_and_authorize_resource
   check_authorization
+  helper_method :our_mirror?
 
   # GET /mirrors
   # GET /mirrors.json
@@ -44,6 +45,7 @@ class MirrorsController < ApplicationController
   # POST /mirrors.json
   def create
     @mirror = Mirror.new(params[:mirror])
+    @mirror.user_id = current_user.id
 
     respond_to do |format|
       if @mirror.save
@@ -83,4 +85,15 @@ class MirrorsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+  def our_mirror?( mirror, user )
+    if user.role.downcase == 'admin'
+        return true
+    end
+
+    return true if mirror.user_id == user.id
+    false
+  end
+
 end

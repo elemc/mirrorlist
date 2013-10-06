@@ -12,6 +12,7 @@
   <%= @repository_type.path_part %>
 </p>
 
-
-<%= link_to 'Edit', edit_repository_type_path(@repository_type) %> |
+<% if can?( :update, @repository_type ) %>
+    <%= link_to 'Edit', edit_repository_type_path(@repository_type) %> |
+<% end %>
 <%= link_to 'Back', repository_types_path %>

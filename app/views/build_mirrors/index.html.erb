@@ -13,13 +13,16 @@
   <tr>
     <td><%= build_mirror.url %></td>
     <td><%= build_mirror.description %></td>
-    <td><%= link_to 'Show', build_mirror %></td>
-    <td><%= link_to 'Edit', edit_build_mirror_path(build_mirror) %></td>
-    <td><%= link_to 'Destroy', build_mirror, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    
+    <td> <% if can? :read, build_mirror %> <%= link_to 'Show', build_mirror %> <% end %> </td>
+    <td> <% if can? :update, build_mirror %> <%= link_to 'Edit', edit_build_mirror_path(build_mirror) %> <% end %> </td>
+    <td> <% if can? :destroy, build_mirror %> <%= link_to 'Destroy', build_mirror, method: :delete, data: { confirm: 'Are you sure?' } %> <% end %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New build mirror', new_build_mirror_path %>
+<% if can? :create, BuildMirror %>
+    <%= link_to 'New build mirror', new_build_mirror_path %>
+<% end %>

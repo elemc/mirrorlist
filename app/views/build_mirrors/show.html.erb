@@ -12,6 +12,7 @@
   <%= @build_mirror.description %>
 </p>
 
-
-<%= link_to 'Edit', edit_build_mirror_path(@build_mirror) %> |
+<% if can? :update, @build_mirror %>
+    <%= link_to 'Edit', edit_build_mirror_path(@build_mirror) %> |
+<% end %>
 <%= link_to 'Back', build_mirrors_path %>

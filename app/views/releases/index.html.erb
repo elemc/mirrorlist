@@ -13,13 +13,15 @@
   <tr>
     <td><%= release.name %></td>
     <td><%= release.stable %></td>
-    <td><%= link_to 'Show', release %></td>
-    <td><%= link_to 'Edit', edit_release_path(release) %></td>
-    <td><%= link_to 'Destroy', release, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><% if can?( :read, release ) %> <%= link_to 'Show', release %> <% end %></td>
+    <td><% if can?( :update, release ) %> <%= link_to 'Edit', edit_release_path(release) %> <% end %></td>
+    <td><% if can?( :destroy, release ) %> <%= link_to 'Destroy', release, method: :delete, data: { confirm: 'Are you sure?' } %> <% end %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Release', new_release_path %>
+<% if can?( :create, Release ) %>
+    <%= link_to 'New Release', new_release_path %>
+<% end %>

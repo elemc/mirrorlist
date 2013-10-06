@@ -1,4 +1,7 @@
 class RepositoryPortionsController < ApplicationController
+  load_and_authorize_resource
+  check_authorization
+
   # GET /repository_portions
   # GET /repository_portions.json
   def index
