@@ -17,7 +17,7 @@
     <td><%= mirror.url %></td>
     <td><%= mirror.description %></td>
     <td><%= mirror.country %></td>
-    <td><%= mirror.user_str %></td>
+    <td><%= mirror.user_str( current_user ) %></td>
     <td><%= mirror.updated_at.in_time_zone('Europe/Moscow') %></td>
     <td><% if can?( :read, mirror ) %> <%= link_to 'Show', mirror %> <% end %></td>
     <td> <% if can?( :update, mirror ) and our_mirror?( mirror, current_user )%> <%= link_to 'Edit', edit_mirror_path(mirror) %> <% end %> </td>

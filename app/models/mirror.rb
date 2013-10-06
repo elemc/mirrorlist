@@ -8,9 +8,15 @@ class Mirror < ActiveRecord::Base
     ""
   end
 
-  def user_str
+  def user_str( user )
+    fallback_user = '### HIDDEN ###'
     u = User.find_by_id( user_id )
-    return "#{u.email}" unless u.nil?
+    return fallback_user if user.nil?
+    if ( user.id == user_id  ) or ( user.admin? )
+        return "#{u.email}" unless u.nil?
+    else
+        return fallback_user
+    end
     ""
   end
 

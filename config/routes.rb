@@ -1,6 +1,13 @@
 Mirrorlist::Application.routes.draw do
 
-  devise_for :users
+  devise_for :users, :path => 'admin' , :path_names => { :sign_in => 'login', :sign_out => 'logout', :password => 'secret', :confirmation => 'verification', registration: 'register' }
+
+  resources :users do
+    member do
+        get 'activate'
+    end
+  end
+
   resources :stats
 
 

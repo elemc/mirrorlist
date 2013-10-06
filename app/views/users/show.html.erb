@@ -1,0 +1,24 @@
+<% if can? :update, @user %>
+<% content_for :title, "#{@user.email}" %>
+<% else %><% content_for :title, "### HIDDEN ###" %>
+<% end %>
+<p id='notice'><% notice %></p>
+
+<p>
+    <b>e-mail:</b>
+    <% if can? :update, @user %>
+    <%= @user.email %>
+    <% else %>
+    ### HIDDEN ###
+    <% end %>
+</p>
+
+<p>
+    <b>Role:</b>
+    <%= @user.role.humanize %>
+</p>
+
+<% if can?( :update, @user ) %>
+    <%= link_to 'Edit', edit_user_path( @user ) %> |
+<% end %>
+<%= link_to 'Back', users_path %>

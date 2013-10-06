@@ -15,4 +15,5 @@
     <li><%= link_to "Repository variants", controller: 'repository_variants', action: 'index' =%></li>
     <li><%= link_to "Repository portion", controller: 'repository_portions', action: 'index' =%></li>
     <% if can? :create, Language %><li><%= link_to "Languages", controller: 'languages', action: 'index' =%></li><% end %>
+    <% if can? :create, User %><li><%= link_to "Users", controller: 'users', action: 'index' =%></li><% end %>
  </ul>
