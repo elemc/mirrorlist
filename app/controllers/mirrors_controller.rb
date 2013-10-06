@@ -86,6 +86,34 @@ class MirrorsController < ApplicationController
     end
   end
 
+  def enable
+    @mirror = Mirror.find(params[:id])
+    @mirror.enabled = true
+    respond_to do |format|
+      if @mirror.save
+        format.html { redirect_to mirrors_url, notice: 'Mirror was successfully enabled.' }
+        format.json { render json: @mirror, status: :created, location: @mirror }
+      else
+        format.html { redirect_to mirrors_url, error: 'Mirror enabled fail!' }
+        format.json { render json: @mirror.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def disable
+    @mirror = Mirror.find(params[:id])
+    @mirror.enabled = false
+    respond_to do |format|
+      if @mirror.save
+        format.html { redirect_to mirrors_url, notice: 'Mirror was successfully disabled.' }
+        format.json { render json: @mirror, status: :created, location: @mirror }
+      else
+        format.html { redirect_to mirrors_url, error: 'Mirror disabled fail!' }
+        format.json { render json: @mirror.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   private
   def our_mirror?( mirror, user )
     if user.role.downcase == 'admin'

@@ -27,7 +27,7 @@ class MirrorListProceed < Object
             if @repo.include? 'build'
                 @mirrors_list = BuildMirror.all
             end
-            Mirror.all.each do |m|
+            Mirror.where( enabled: true).each do |m|
                 val = workaround.value
                 port = val.sub! "$arch$", @arch
                 wl = URI.join( m, port )
@@ -100,13 +100,13 @@ class MirrorListProceed < Object
         unless @country.nil?
             c = Country.find_by_code @country
             unless c.nil?
-                result_list = Mirror.where( country_code: @country )
-                result_list += Mirror.where( "country_code != ?", @country )
+                result_list = Mirror.where( "country_code == ? AND enabled == ?", @country, true )
+                result_list += Mirror.where( "country_code != ? AND enabled == ?", @country, true )
                 return result_list
             end
         end
 
-        Mirror.all              
+        Mirror.where( enabled: true )
     end
 
     def generate_main_list
@@ -116,6 +116,7 @@ class MirrorListProceed < Object
             variant = @repo_params['variant']
             str_to_add = variant.sub '$mirror$', mirror
             @repo_params.keys.each do |key|
+                str_to_add = "" if str_to_add.nil?
                 next if key == 'variant'
                 sub_str = "$#{key}$"
                 value = @repo_params[key]

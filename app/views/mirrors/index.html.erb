@@ -7,6 +7,8 @@
     <th>Country</th>
     <th>User</th>
     <th>Updated</th>
+    <th>Enabled</th>
+    <th></th>
     <th></th>
     <th></th>
     <th></th>
@@ -19,6 +21,14 @@
     <td><%= mirror.country %></td>
     <td><%= mirror.user_str( current_user ) %></td>
     <td><%= mirror.updated_at.in_time_zone('Europe/Moscow') %></td>
+    <td><%= mirror.enabled %></td>
+    <td><% if mirror.is_my_mirror? current_user %>
+            <% if mirror.enabled %>
+                <%= link_to 'Disable', disable_mirror_path( mirror ) %>
+            <% else %>
+                <%= link_to 'Enable', enable_mirror_path( mirror ) %>
+            <% end %>
+        <% end %></td>
     <td><% if can?( :read, mirror ) %> <%= link_to 'Show', mirror %> <% end %></td>
     <td> <% if can?( :update, mirror ) and our_mirror?( mirror, current_user )%> <%= link_to 'Edit', edit_mirror_path(mirror) %> <% end %> </td>
     <td> <% if can?( :destroy, mirror ) and our_mirror?( mirror, current_user ) %> <%= link_to 'Destroy', mirror, method: :delete, data: { confirm: 'Are you sure?' } %> <% end %></td>

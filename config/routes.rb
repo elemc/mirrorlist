@@ -43,7 +43,12 @@ Mirrorlist::Application.routes.draw do
   resources :arches
 
 
-  resources :mirrors
+  resources :mirrors do
+    member do
+        get 'enable'
+        get 'disable'
+    end
+  end
 
   root :to => "home#index"
 

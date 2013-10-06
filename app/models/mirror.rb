@@ -1,5 +1,5 @@
 class Mirror < ActiveRecord::Base
-  attr_accessible :description, :url, :country_code, :user_id
+  attr_accessible :description, :url, :country_code, :user_id, :enabled
   belongs_to :country
 
   def country
@@ -12,12 +12,19 @@ class Mirror < ActiveRecord::Base
     fallback_user = '### HIDDEN ###'
     u = User.find_by_id( user_id )
     return fallback_user if user.nil?
-    if ( user.id == user_id  ) or ( user.admin? )
+    if is_my_mirror? user
         return "#{u.email}" unless u.nil?
     else
         return fallback_user
     end
     ""
+  end
+
+  def is_my_mirror?( user )
+    return false if ( user.nil? )
+    u = User.find_by_id( user_id )
+    return true if ( user.id == user_id  ) or ( user.admin? )
+    false
   end
 
 end
