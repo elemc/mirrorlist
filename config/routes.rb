@@ -1,10 +1,10 @@
 Mirrorlist::Application.routes.draw do
+
   devise_for :users
   resources :stats
 
 
   resources :countries
-#  get 'countries/fill', :as => :fill_countries
  
 
   resources :releases

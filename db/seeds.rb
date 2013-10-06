@@ -47,6 +47,11 @@ porions = RepositoryPortion.create(
     ]
 )
 
+# Fill admin
+admin = User.new( { email: 'admin@localhost.localdomain', password: '1234', password_confirmation: '1234', role: 'admin'} )
+admin.skip_confirmation!
+admin.save!
+
 # Fill countries
 require 'net/http'
 countries_url = URI 'http://www.iso.org/iso/home/standards/country_codes/country_names_and_code_elements_txt.htm'
@@ -66,5 +71,4 @@ clist[1..-1].each do |cpair|
     end
 end
 
-# Fill admin
-admin = User.create( [{ email: 'admin@localhost.tld', password: '1234', password_confirmation: '1234', role: 'admin'}] )
+
