@@ -100,8 +100,8 @@ class MirrorListProceed < Object
         unless @country.nil?
             c = Country.find_by_code @country
             unless c.nil?
-                result_list = Mirror.where( "country_code == ? AND enabled == ?", @country, true )
-                result_list += Mirror.where( "country_code != ? AND enabled == ?", @country, true )
+                result_list = Mirror.where( "country_code = ? AND enabled = ?", @country, true )
+                result_list += Mirror.where( "country_code <> ? AND enabled = ?", @country, true )
                 return result_list
             end
         end
