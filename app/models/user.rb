@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
   private
 
   def create_role
-    if self.role == ''
+    if self.role.nil? or self.role.blank?
         self.role = 'banned'
     end
   end
