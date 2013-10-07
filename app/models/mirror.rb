@@ -1,6 +1,7 @@
 class Mirror < ActiveRecord::Base
   attr_accessible :description, :url, :country_code, :user_id, :enabled
   belongs_to :country
+  before_save :check_and_set_enabled
 
   def country
     c = Country.find_by_code( country_code )
@@ -25,6 +26,16 @@ class Mirror < ActiveRecord::Base
     u = User.find_by_id( user_id )
     return true if ( user.id == user_id  ) or ( user.admin? )
     false
+  end
+
+  private
+
+  def check_and_set_enabled
+    return unless self.enabled.nil?
+
+    self.enabled = false
+    return nil
+
   end
 
 end
