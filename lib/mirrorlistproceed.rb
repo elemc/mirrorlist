@@ -30,7 +30,7 @@ class MirrorListProceed < Object
             Mirror.where( enabled: true).each do |m|
                 val = workaround.value
                 port = val.sub! "$arch$", @arch
-                wl = URI.join( m, port )
+                wl = URI.join( m.url, port )
                 @mlist << wl
             end
             return
